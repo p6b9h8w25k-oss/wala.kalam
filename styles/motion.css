@@ -1,0 +1,39 @@
+/* Motion language: fast feedback (120ms), state changes (260ms), reveals (520ms), flip (760ms). */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet-in { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pop-in { from { transform: scale(0.86); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes toast-in { from { transform: translate(-50%, 20px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+@keyframes toast-out { to { transform: translate(-50%, 12px); opacity: 0; } }
+@keyframes splash-in { from { transform: scale(0.8) rotate(-4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes screen-in { from { opacity: 0; transform: translateY(22px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes wiggle { 0% { transform: rotate(0); } 25% { transform: rotate(-6deg) scale(1.04); } 55% { transform: rotate(5deg) scale(1.04); } 100% { transform: none; } }
+@keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.35); } 100% { transform: scale(1); } }
+@keyframes coin-drop { 0% { transform: translateY(-160px) rotate(-30deg); opacity: 0; } 55% { transform: translateY(0) rotate(8deg); opacity: 1; } 72% { transform: translateY(-22px) rotate(-3deg); } 88% { transform: translateY(0); } 100% { transform: none; } }
+@keyframes slam { 0% { transform: scale(2.6) rotate(-6deg); opacity: 0; } 60% { transform: scale(0.94) rotate(1deg); opacity: 1; } 100% { transform: none; } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-3px) rotate(-.6deg); } 40% { transform: translateX(3px) rotate(.6deg); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--team) 45%, transparent); } 100% { box-shadow: 0 0 0 22px transparent; } }
+@keyframes medal-in { 0% { transform: scale(.3) rotate(-30deg); opacity: 0; } 60% { transform: scale(1.12) rotate(6deg); opacity: 1; } 100% { transform: none; } }
+@keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes shine { from { transform: translateX(-130%) skewX(-18deg); } to { transform: translateX(260%) skewX(-18deg); } }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+.screen.enter { animation: screen-in var(--dur-slow) var(--ease-out) both; }
+.bump { animation: bump 520ms var(--ease-spring); }
+.coins .coin { animation: coin-drop 820ms var(--ease-out) both; }
+.coins .coin:nth-child(2) { animation-delay: 160ms; }
+.slam { animation: slam 520ms var(--ease-spring) both; }
+.watch.urgent .watch-ring { animation: shake 0.5s linear infinite; }
+.watch.steal-run .watch-ring { animation: pulse-ring 1s ease-out infinite; }
+.medal { animation: medal-in 900ms var(--ease-spring) both; }
+.seesaw .beam { transform-origin: 110px 84px; animation: sway 3.6s var(--ease-in-out) infinite; }
+.rise { animation: rise 600ms var(--ease-out) both; }
+.rise.d1 { animation-delay: 120ms; } .rise.d2 { animation-delay: 240ms; } .rise.d3 { animation-delay: 360ms; }
+.btn-key.shine::after { content: ''; position: absolute; inset: 0; border-radius: inherit; overflow: hidden; background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,.35) 50%, transparent 60%); animation: shine 2.8s var(--ease-in-out) 1s infinite; pointer-events: none; }
+.btn-key { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+  .wcard-inner { transition: none; }
+  .btn-key.shine::after { display: none; }
+}

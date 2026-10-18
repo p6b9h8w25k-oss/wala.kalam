@@ -1,0 +1,66 @@
+/* Design tokens. Change colours / fonts / motion here and the whole game follows. */
+:root {
+  /* palette (from colors/Color_Palette___Roles.txt) */
+  --snow: #F7F5F0;        /* background */
+  --stone: #DCD8D0;       /* surfaces, dividers */
+  --persian: #B33A46;     /* primary action, Team A */
+  --queen: #496A81;       /* secondary, Team B */
+  --charcoal: #292929;    /* text */
+  /* derived */
+  --ink-2: #5B5851;       /* secondary text (6:1 on snow) */
+  --ivory: #FCFAF6;
+  --peach: #FFE8D6;       /* sampled from the logo background */
+  --apricot: #EEAF7E;     /* sampled from the cat */
+  --persian-deep: #8A2B36;
+  --persian-soft: #F1D9DB;
+  --queen-deep: #35505F;
+  --queen-soft: #DAE4EB;
+  --ok: #3B7757;
+  --ok-soft: #D9EADF;
+  --brass-1: #E9DDC3; --brass-2: #B9A57A; --brass-3: #8A7648;
+
+  /* neumorphic light/shadow pair tuned for --snow */
+  --shadow-dark: #D2CDC2;
+  --shadow-light: #FFFFFF;
+  --neu-raised: 7px 7px 16px var(--shadow-dark), -7px -7px 16px var(--shadow-light);
+  --neu-raised-sm: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  --neu-inset: inset 5px 5px 11px var(--shadow-dark), inset -5px -5px 11px var(--shadow-light);
+  --neu-inset-sm: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+
+  /* glass */
+  --glass-bg: rgba(252, 250, 246, 0.58);
+  --glass-bg-solid: rgba(252, 250, 246, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 12px 32px rgba(41, 41, 41, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  /* team (overridden by [data-team]) */
+  --team: var(--persian);
+  --team-deep: var(--persian-deep);
+  --team-soft: var(--persian-soft);
+
+  /* type */
+  --font-ui: 'thmanyah Sans', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-display: 'thmanyah Display', 'thmanyah Sans', 'Segoe UI', serif;
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-md: 1.0625rem;
+  --t-lg: 1.375rem;
+  --t-xl: 1.875rem;
+  --t-2xl: clamp(2.2rem, 9vw, 3rem);
+  --t-word: clamp(2rem, 10vw, 3rem);
+
+  /* shape */
+  --r-sm: 12px; --r-md: 20px; --r-lg: 28px; --r-xl: 38px;
+  --tap: 52px;
+
+  /* motion language */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 260ms;
+  --dur-slow: 520ms;
+  --dur-flip: 760ms;
+}
+[data-team='A'] { --team: var(--persian); --team-deep: var(--persian-deep); --team-soft: var(--persian-soft); }
+[data-team='B'] { --team: var(--queen); --team-deep: var(--queen-deep); --team-soft: var(--queen-soft); }
